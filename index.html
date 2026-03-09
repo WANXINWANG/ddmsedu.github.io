@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>明思未来 | MSEDU - 智能教育机器人引领者</title>
+    <meta name="description" content="明思未来专注于智能教育机器人研发，为特殊儿童提供个性化认知与情绪训练解决方案">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #4A90E2;
+            --secondary: #7B68EE;
+            --accent: #00D9A5;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+            --white: #ffffff;
+        }
+        html { scroll-behavior: smooth; }
+        body {
+            font-family: 'PingFang SC', 'Microsoft YaHei', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        section { padding: 80px 0; }
+        h1, h2, h3 { font-weight: 700; }
+        h2 { font-size: 2.5rem; text-align: center; margin-bottom: 20px; }
+        .subtitle { text-align: center; color: #666; margin-bottom: 60px; }
+        
+        /* 导航栏 */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: 15px 0;
+        }
+        .navbar .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--primary); }
+        
+        /* Hero 区域 */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            padding-top: 80px;
+        }
+        .hero .container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        .hero-content { color: var(--white); }
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 20px;
+            border-radius: 50px;
+            margin-bottom: 20px;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        .hero-btns { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-white {
+            background: var(--white);
+            color: var(--primary);
+        }
+        .btn-outline {
+            border: 2px solid var(--white);
+            color: var(--white);
+            background: transparent;
+        }
+        .btn-white:hover, .btn-outline:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        .hero-robot {
+            font-size: 200px;
+            text-align: center;
+            animation: float 3s ease-in-out infinite;
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        /* 产品介绍 */
+        .products { background: var(--light); }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        .product-card {
+            background: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+        .product-card:hover { transform: translateY(-10px); }
+        .product-icon {
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+        .product-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        .product-card p { color: #666; margin-bottom: 20px; }
+        .product-tag {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        /* 核心技术 */
+        .technology { }
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .tech-item {
+            text-align: center;
+            padding: 30px;
+            border-radius: 15px;
+            background: linear-gradient(135deg, rgba(74,144,226,0.1), rgba(123,104,238,0.1));
+        }
+        .tech-item h3 { margin: 15px 0 10px; }
+        .tech-item p { color: #666; }
+        
+        /* 应用场景 */
+        .scenarios { background: var(--dark); color: var(--white); }
+        .scenarios h2 { color: var(--white); }
+        .scenarios .subtitle { color: rgba(255,255,255,0.7); }
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        .scenario-card {
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        .scenario-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: var(--accent);
+        }
+        .scenario-card p { opacity: 0.9; }
+        
+        /* 数据展示 */
+        .stats {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--white);
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+        .stat-item h3 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+        .stat-item p { opacity: 0.9; }
+        
+        /* 团队 */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        .team-card {
+            text-align: center;
+            padding: 30px;
+            background: var(--light);
+            border-radius: 15px;
+        }
+        .team-avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin: 0 auto 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+        }
+        .team-card h3 { margin-bottom: 5px; }
+        .team-card p { color: #666; }
+        
+        /* 联系我们 */
+        .contact { background: var(--light); }
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        .contact-info h3 { margin-bottom: 20px; }
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        .contact-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+        }
+        .contact-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .form-group { margin-bottom: 20px; }
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid var(--light);
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        .form-group textarea { resize: vertical; min-height: 120px; }
+        
+        /* 页脚 */
+        .footer {
+            background: var(--dark);
+            color: var(--white);
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer p { opacity: 0.7; }
+        
+        /* 响应式 */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu-btn { display: flex; }
+            .hero .container,
+            .tech-grid,
+            .scenario-grid,
+            .stats-grid,
+            .team-grid,
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 { font-size: 2rem; }
+            .hero-robot { font-size: 100px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">明思未来 MSEDU</div>
+            <ul class="nav-links">
+                <li><a href="#home">首页</a></li>
+                <li><a href="#products">产品</a></li>
+                <li><a href="#technology">技术</a></li>
+                <li><a href="#scenarios">场景</a></li>
+                <li><a href="#team">团队</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+            <button class="mobile-menu-btn">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero 区域 -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <span class="hero-badge">🤖 教育机器人从工具到伙伴的进化</span>
+                <h1>让每个孩子都拥有<br>专属的智能学习伙伴</h1>
+                <p>明思未来专注于智能教育机器人研发，基于 MCP 协议与多模态交互技术，为特殊儿童提供个性化认知与情绪训练解决方案</p>
+                <div class="hero-btns">
+                    <a href="#products" class="btn btn-white">了解产品</a>
+                    <a href="#contact" class="btn btn-outline">合作咨询</a>
+                </div>
+            </div>
+            <div class="hero-robot">🤖</div>
+        </div>
+    </section>
+
+    <!-- 产品介绍 -->
+    <section class="products" id="products">
+        <div class="container">
+            <h2>核心产品</h2>
+            <p class="subtitle">MSEDU 助教机器人协同分析系统 第一代</p>
+            <div class="product-grid">
+                <div class="product-card">
+                    <div class="product-icon">🎯</div>
+                    <h3>认知训练系统</h3>
+                    <p>基于对话交互的注意力训练，通过数字接龙、听描述找不同等游戏，提升儿童专注力与执行功能</p>
+                    <span class="product-tag">核心功能</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">💖</div>
+                    <h3>情绪训练系统</h3>
+                    <p>情绪词汇学习、情境情绪判断、冷静角引导，帮助儿童识别、表达和调节情绪</p>
+                    <span class="product-tag">核心功能</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🗣️</div>
+                    <h3>语言认知系统</h3>
+                    <p>听描述猜物、故事接龙、主题讲述，在自然对话中提升语言能力与认知水平</p>
+                    <span class="product-tag">核心功能</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🤝</div>
+                    <h3>社交训练系统</h3>
+                    <p>角色扮演对话、情境应对练习、礼貌用语学习，培养儿童社交技能与沟通能力</p>
+                    <span class="product-tag">核心功能</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">🧠</div>
+                    <h3>长期记忆引擎</h3>
+                    <p>记录儿童对话特点、能力发展轨迹、训练历史，实现"越用越懂你"的个性化适配</p>
+                    <span class="product-tag">技术核心</span>
+                </div>
+                <div class="product-card">
+                    <div class="product-icon">📊</div>
+                    <h3>IEP 自动生成</h3>
+                    <p>基于训练数据自动生成个别化教育计划，包含能力评估、目标设定、进度追踪</p>
+                    <span class="product-tag">专业工具</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 核心技术 -->
+    <section class="technology" id="technology">
+        <div class="container">
+            <h2>核心技术</h2>
+            <p class="subtitle">三机协同 · 边缘智能 · 安全合规</p>
+            <div class="tech-grid">
+                <div class="tech-item">
+                    <div style="font-size:50px">🔌</div>
+                    <h3>MCP 协议架构</h3>
+                    <p>基于模型上下文协议的"核心 - 插件"式架构，功能模块化，支持快速扩展与迭代</p>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size:50px">🎭</div>
+                    <h3>多模态交互</h3>
+                    <p>融合语音、文本的多模态交互机制，针对特殊儿童设计"低刺激强化""碎片化引导"策略</p>
+                </div>
+                <div class="tech-item">
+                    <div style="font-size:50px">🔒</div>
+                    <h3>隐私安全</h3>
+                    <p>本地加密存储、数据脱敏上云、等保 3.0 认证，确保学生数据全生命周期安全</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 应用场景 -->
+    <section class="scenarios" id="scenarios">
+        <div class="container">
+            <h2>应用场景</h2>
+            <p class="subtitle">家庭 · 学校 · 机构 全方位覆盖</p>
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <h3>🏠 家庭训练</h3>
+                    <p>为特殊儿童家庭提供低成本、高适配性的陪学与康复辅助工具，降低训练成本，提升训练趣味性与持续性。家长可实时查看训练报告，了解孩子进步情况。</p>
+                </div>
+                <div class="scenario-card">
+                    <h3>🏫 学校融合</h3>
+                    <p>与学校训练数据互通，家校训练计划同步。教师可通过系统查看学生家庭训练情况，调整校内教学策略，实现家校协同育人。</p>
+                </div>
+                <div class="scenario-card">
+                    <h3>🏥 特教机构</h3>
+                    <p>补充专业师资不足，提供数据驱动的评估工具。治疗师可远程督导，查看学生训练数据，制定更精准的干预方案。</p>
+                </div>
+                <div class="scenario-card">
+                    <h3>📋 IEP 制定</h3>
+                    <p>基于训练数据自动生成个别化教育计划，包含能力评估、长期/短期目标设定、进度追踪，让 IEP 制定更高效、更数据驱动。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 数据展示 -->
+    <section class="stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3>90%+</h3>
+                    <p>学情分析准确率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>90%+</h3>
+                    <p>心理状况高风险识别率</p>
+                </div>
+                <div class="stat-item">
+                    <h3>15%</h3>
+                    <p>注意力持续时间提升</p>
+                </div>
+                <div class="stat-item">
+                    <h3>80%+</h3>
+                    <p>训练依从性</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 团队 -->
+    <section class="team" id="team">
+        <div class="container">
+            <h2>核心团队</h2>
+            <p class="subtitle">专业团队 · 深耕教育 · 技术创新</p>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-avatar">👨‍💻</div>
+                    <h3>硬件负责人</h3>
+                    <p>10 年硬件研发经验</p>
+                    <p>主导过多个智能硬件产品的设计和开发</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">👩‍💻</div>
+                    <h3>软件负责人</h3>
+                    <p>10 年软件开发经验</p>
+                    <p>专注于机器学习领域，具备强大技术攻关能力</p>
+                </div>
+                <div class="team-card">
+                    <div class="team-avatar">🧠</div>
+                    <h3>AI 算法负责人</h3>
+                    <p>教育 AI 专家</p>
+                    <p>深耕特殊教育领域，懂技术更懂孩子</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 联系我们 -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <h2>合作咨询</h2>
+            <p class="subtitle">期待与您携手 · 共创智能教育未来</p>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>联系方式</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📧</div>
+                        <div>
+                            <strong>邮箱</strong>
+                            <p>contact@msedu.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📱</div>
+                        <div>
+                            <strong>电话</strong>
+                            <p>400-XXX-XXXX</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            <strong>地址</strong>
+                            <p>北京市海淀区中关村科技园</p>
+                        </div>
+                    </div>
+                    <div style="margin-top:30px">
+                        <h3>融资需求</h3>
+                        <p>天使轮：500 万元</p>
+                        <p>用于产品研发、市场拓展、团队建设</p>
+                    </div>
+                </div>
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label>姓名 *</label>
+                            <input type="text" placeholder="您的姓名" required>
+                        </div>
+                        <div class="form-group">
+                            <label>邮箱 *</label>
+                            <input type="email" placeholder="您的邮箱" required>
+                        </div>
+                        <div class="form-group">
+                            <label>公司/机构</label>
+                            <input type="text" placeholder="公司或机构名称">
+                        </div>
+                        <div class="form-group">
+                            <label>合作意向</label>
+                            <select style="width:100%;padding:12px 20px;border:2px solid var(--light);border-radius:10px;font-size:1rem">
+                                <option>产品采购</option>
+                                <option>投资合作</option>
+                                <option>渠道合作</option>
+                                <option>其他</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>留言</label>
+                            <textarea placeholder="请描述您的合作需求..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="width:100%;background:linear-gradient(135deg,var(--primary),var(--secondary))">提交咨询</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 明思未来 MSEDU. All rights reserved.</p>
+            <p style="margin-top:10px">用科技赋能教育，让每个孩子都能享受个性化的优质教育</p>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
+            } else {
+                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            }
+        });
+
+        // 表单提交
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('感谢您的咨询！我们会尽快与您联系～');
+        });
+    </script>
+</body>
+</html>
+<!-- rebuild -->
