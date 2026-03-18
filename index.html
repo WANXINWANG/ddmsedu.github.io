@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>明思未来 MSEDU - 智能教育机器人</title>
-    <meta name="description" content="明思未来MSEDU智能教育机器人，为特殊儿童提供个性化认知与情绪训练解决方案">
+    <title>MSFuture - 智能教育机器人</title>
+    <meta name="description" content="MSFuture智能教育机器人，为特殊儿童提供个性化认知与情绪训练解决方案">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -121,14 +121,13 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
-        .hero-robot {
-            font-size: 200px;
+        .hero-image {
             text-align: center;
-            animation: float 3s ease-in-out infinite;
         }
-        @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
         }
         
         /* 产品外观 */
@@ -144,64 +143,10 @@
         .appearance-visual {
             text-align: center;
         }
-        .cat-robot {
-            width: 100%;
-            max-width: 400px;
-            background: linear-gradient(135deg, var(--cat-blue), #3A8AD6);
-            border-radius: 30px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(74, 144, 226, 0.3);
-        }
-        .cat-head {
-            background: var(--white);
-            border-radius: 50%;
-            aspect-ratio: 1.5;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            box-shadow: inset 0 -10px 30px rgba(0,0,0,0.1);
-        }
-        .cat-screen {
-            width: 70%;
-            height: 60%;
-            background: #1a1a2e;
-            border-radius: 40%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent);
-            font-size: 3rem;
-        }
-        .cat-ears {
-            position: absolute;
-            top: -20px;
-            width: 30%;
-            display: flex;
-            justify-content: space-between;
-        }
-        .cat-ear {
-            width: 50px;
-            height: 50px;
-            background: var(--cat-blue);
-            clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-        }
-        .cat-body {
-            width: 60%;
-            height: 80px;
-            background: var(--white);
-            margin: 20px auto 0;
+        .appearance-visual img {
+            max-width: 100%;
             border-radius: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        .cat-logo {
-            font-size: 2rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
         .appearance-content h3 {
             font-size: 1.8rem;
@@ -503,7 +448,6 @@
                 grid-template-columns: 1fr;
             }
             .hero h1 { font-size: 2rem; }
-            .hero-robot { font-size: 100px; }
             .spec-list { grid-template-columns: 1fr; }
         }
     </style>
@@ -512,7 +456,7 @@
     <!-- 导航栏 -->
     <nav class="navbar">
         <div class="container">
-            <div class="logo">明思未来 MSEDU</div>
+            <div class="logo">MSFuture</div>
             <ul class="nav-links">
                 <li><a href="#home">首页</a></li>
                 <li><a href="#appearance">产品外观</a></li>
@@ -528,15 +472,17 @@
     <section class="hero" id="home">
         <div class="container">
             <div class="hero-content">
-                <span class="hero-badge">🐱 MSEDU 智能教育机器人</span>
+                <span class="hero-badge">MSFuture 智能教育机器人</span>
                 <h1>让每个孩子都拥有<br>专属的智能学习伙伴</h1>
-                <p>明思未来 MSEDU 专注于智能教育机器人研发，基于 MCP 协议与多模态交互技术，为特殊儿童提供个性化认知与情绪训练解决方案</p>
+                <p>MSFuture 专注于智能教育机器人研发，基于 MCP 协议与多模态交互技术，为特殊儿童提供个性化认知与情绪训练解决方案</p>
                 <div class="hero-btns">
                     <a href="#appearance" class="btn btn-white">了解产品</a>
                     <a href="#contact" class="btn btn-outline">合作咨询</a>
                 </div>
             </div>
-            <div class="hero-robot">🐱</div>
+            <div class="hero-image">
+                <img src="https://raw.githubusercontent.com/WANXINWANG/ddmsedu.github.io/main/imgs/robot-product.jpg" alt="云宝AI学伴机器人" onerror="this.style.display='none'">
+            </div>
         </div>
     </section>
 
@@ -544,21 +490,10 @@
     <section class="appearance" id="appearance">
         <div class="container">
             <h2>产品外观</h2>
-            <p class="subtitle">可爱猫形设计 · 专为儿童打造</p>
+            <p class="subtitle">云宝 AI 学伴机器人 · MSFuture</p>
             <div class="appearance-grid">
                 <div class="appearance-visual">
-                    <div class="cat-robot">
-                        <div class="cat-head">
-                            <div class="cat-ears">
-                                <div class="cat-ear"></div>
-                                <div class="cat-ear"></div>
-                            </div>
-                            <div class="cat-screen">😊</div>
-                        </div>
-                        <div class="cat-body">
-                            <span class="cat-logo">MS</span>
-                        </div>
-                    </div>
+                    <img src="https://raw.githubusercontent.com/WANXINWANG/ddmsedu.github.io/main/imgs/robot-product.jpg" alt="云宝AI学伴机器人" onerror="this.src='https://www.naozhao.com/placeholder.png'">
                 </div>
                 <div class="appearance-content">
                     <h3>云宝 AI 学伴机器人</h3>
@@ -569,7 +504,7 @@
                         <div class="spec-item"><span class="spec-icon">🔊</span><span class="spec-text">猫耳扬声器</span></div>
                         <div class="spec-item"><span class="spec-icon">🔋</span><span class="spec-text">持久续航</span></div>
                         <div class="spec-item"><span class="spec-icon">🎮</span><span class="spec-text">履带移动</span></div>
-                        <div class="spec-item"><span class="spec-icon">🛡️</span><span class="spec-text">MS品牌</span></div>
+                        <div class="spec-item"><span class="spec-icon">🛡️</span><span class="spec-text">MSFuture</span></div>
                     </div>
                 </div>
             </div>
@@ -676,7 +611,7 @@
     <section class="products" id="products">
         <div class="container">
             <h2>核心功能</h2>
-            <p class="subtitle">MSEDU 助教机器人协同分析系统</p>
+            <p class="subtitle">MSFuture 助教机器人协同分析系统</p>
             <div class="product-grid">
                 <div class="product-card">
                     <div class="product-icon">🎯</div>
@@ -819,15 +754,15 @@
                     <h3>联系方式</h3>
                     <div class="contact-item">
                         <div class="contact-icon">📧</div>
-                        <div><strong>邮箱</strong><p>contact@msedu.com</p></div>
+                        <div><strong>邮箱</strong><p>13326093039@163.com</p></div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📱</div>
-                        <div><strong>电话</strong><p>400-XXX-XXXX</p></div>
+                        <div><strong>电话</strong><p>暂无</p></div>
                     </div>
                     <div class="contact-item">
                         <div class="contact-icon">📍</div>
-                        <div><strong>地址</strong><p>北京市海淀区中关村科技园</p></div>
+                        <div><strong>地址</strong><p>上海市宝山区长江路258号6幢</p></div>
                     </div>
                     <div style="margin-top:30px">
                         <h3>融资需求</h3>
@@ -872,7 +807,7 @@
     <!-- 页脚 -->
     <footer class="footer">
         <div class="container">
-            <p>© 2026 明思未来 MSEDU. All rights reserved.</p>
+            <p>© 2026 MSFuture. All rights reserved.</p>
             <p style="margin-top:10px">用科技赋能教育，让每个孩子都能享受个性化的优质教育</p>
         </div>
     </footer>
